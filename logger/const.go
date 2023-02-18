@@ -7,7 +7,7 @@ const (
 
 	KeyRequestID = "request_id"
 
-	logRotateFileNameFmt = "%s.%%Y%%m%%d"
+	logRotateFileNameFmt = "logs/%s.%%Y%%m%%d.log"
 	logRotateTime        = 24 * time.Hour
 	logRotateCount       = 7
 	logRotateSize        = 100 * 1024 * 1024
