@@ -7,7 +7,7 @@ import (
 	rotateLogs "github.com/lestrrat-go/file-rotatelogs"
 )
 
-func newFileHook(fileName string) io.Writer {
+func newFileWriter(fileName string) io.Writer {
 	fileWriter, err := rotateLogs.New(
 		fmt.Sprintf(logRotateFileNameFmt, fileName),
 		rotateLogs.WithLinkName(fileName),

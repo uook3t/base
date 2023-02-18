@@ -15,5 +15,5 @@ func Init(serverName string) {
 		logrus.SetLevel(logrus.DebugLevel)
 	}
 
-	logrus.SetOutput(newFileHook(serverName))
+	logrus.SetOutput(newFileWriter(serverName))
 }
