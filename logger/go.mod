@@ -1,4 +1,4 @@
-module github.com/uook3t/logger
+module github.com/uook3t/base/logger
 
 go 1.20
 
