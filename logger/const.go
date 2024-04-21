@@ -3,7 +3,8 @@ package logger
 import "time"
 
 const (
-	envDebug = "debug"
+	envDebug     = "debug"
+	envLogSdtOut = "logstdout"
 
 	KeyRequestID = "request_id"
 

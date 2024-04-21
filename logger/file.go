@@ -3,11 +3,12 @@ package logger
 import (
 	"fmt"
 	"io"
+	"os"
 
 	rotateLogs "github.com/lestrrat-go/file-rotatelogs"
 )
 
-func newFileWriter(fileName string) io.Writer {
+func newFileWriter(fileName string, needStdOut bool) io.Writer {
 	fileWriter, err := rotateLogs.New(
 		fmt.Sprintf(logRotateFileNameFmt, fileName),
 		rotateLogs.WithLinkName(fileName),
@@ -19,5 +20,10 @@ func newFileWriter(fileName string) io.Writer {
 	if err != nil {
 		panic(err)
 	}
-	return fileWriter
+
+	if !needStdOut {
+		return fileWriter
+	}
+	mw := io.MultiWriter(os.Stdout, fileWriter)
+	return mw
 }

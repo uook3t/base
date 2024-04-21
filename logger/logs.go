@@ -14,6 +14,10 @@ func Init(serverName string) {
 	if os.Getenv(envDebug) == "true" {
 		logrus.SetLevel(logrus.DebugLevel)
 	}
+	var needStdOut bool
+	if os.Getenv(envLogSdtOut) == "true" {
+		needStdOut = true
+	}
 
-	logrus.SetOutput(newFileWriter(serverName))
+	logrus.SetOutput(newFileWriter(serverName, needStdOut))
 }
