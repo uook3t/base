@@ -140,7 +140,7 @@ func (a *AlipanDriverImpl) RefreshAccessToken(ctx context.Context) error {
 		a.refreshToken = rt
 	}
 
-	httpReq := utils.NewRawHttpRequest(http.MethodPost, OpenUrl(PathAccessToken, nil), a.NewRefreshAccessTokenReq(a.authCode))
+	httpReq := utils.NewRawHttpRequest(http.MethodPost, OpenUrl(PathAccessToken, nil), a.NewRefreshAccessTokenReq(a.refreshToken))
 	httpResp, err := httpReq.DoSimpleHttp(ctx)
 	if err != nil {
 		if httpResp.StatusCode == http.StatusUnauthorized {
