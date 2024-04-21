@@ -17,6 +17,7 @@ var (
 
 const (
 	HeaderAuthorization = "Authorization"
+	AuthBearer          = "Bearer"
 )
 
 type RawHttpRequest struct {
@@ -54,7 +55,7 @@ func (r *RawHttpRequest) WithCli(cli *http.Client) {
 }
 
 func (r *RawHttpRequest) WithAccessToken(accessToken string) {
-	r.Header[HeaderAuthorization] = accessToken
+	r.Header[HeaderAuthorization] = fmt.Sprintf("%s %s", AuthBearer, accessToken)
 }
 
 func (r *RawHttpRequest) DoSimpleHttp(ctx context.Context) (*HttpResponse, error) {
